@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const RedirectWait = () => {
+            const targetURL = "https://wa.me/628973965618";
+
+            React.useEffect(() => {
+                // Eksekusi redirect instan setelah komponen mount
+                window.location.replace(targetURL);
+            }, []);
+
+            return (
+                <div style={{ 
+                    fontFamily: 'sans-serif', 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center', 
+                    height: '100vh' 
+                }}>
+                    <p>Mengarahkan ke WhatsApp...</p>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<RedirectWait />);
+    </script>
+</body>
+</html>
