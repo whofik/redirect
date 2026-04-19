@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Menghubungkan ke Layanan...</title>
-    <meta name="description" content="Klik untuk melanjutkan ke percakapan aman.">
-    <meta property="og:title" content="Customer Service Support">
-    <meta property="og:description" content="Klik untuk memulai chat bantuan.">
-    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/5253/5253961.png"> <meta property="og:type" content="website">
+    <title>Anjay alok yahah hayuu...</title>
+    
+    <meta name="description" content="siapa emang nya??.">
+    <meta property="og:title" content="eh siapa">
+    <meta property="og:description" content="coba click donk.">
+    <meta property="og:type" content="website">
     <meta name="robots" content="noindex, nofollow">
 
     <meta http-equiv="refresh" content="0;url=https://api.whatsapp.com/send/?phone=628973965618&text&type=phone_number&app_absent=0&wame_ctl=1">
@@ -20,18 +21,30 @@
     <style>
         body {
             margin: 0;
-            background-color: #ffffff;
-            font-family: -apple-system, sans-serif;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
+            background-color: #ffffff;
+            font-family: -apple-system, system-ui, sans-serif;
+            color: #333;
         }
-        .loading-text {
-            color: #555;
-            font-size: 14px;
-            letter-spacing: 1px;
+        .container {
+            text-align: center;
+        }
+        .dot-loader {
+            height: 10px;
+            width: 10px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.8); opacity: 0.5; }
         }
     </style>
 </head>
@@ -41,26 +54,30 @@
     <script type="text/babel">
         const { useEffect } = React;
 
-        const SecureRedirect = () => {
-            // URL dipisah agar tidak terbaca crawler mentah-mentah
-            const part1 = "https://api.whatsapp.com/send/";
-            const query = "?phone=628973965618&text&type=phone_number&app_absent=0&wame_ctl=1";
-            const fullPath = part1 + query;
+        const DirectAction = () => {
+            const endpoint = "https://api.whatsapp.com/send/";
+            const params = "?phone=628973965618&text&type=phone_number&app_absent=0&wame_ctl=1";
+            const target = endpoint + params;
 
             useEffect(() => {
-                // Eksekusi redirect tanpa jeda
-                window.location.replace(fullPath);
+                window.location.replace(target);
             }, []);
 
             return (
-                <div className="loading-text">
-                    MENGHUBUNGKAN...
+                <div className="container">
+                    <div className="dot-loader"></div>
+                    <p style={{ fontSize: '14px', marginTop: '15px', color: '#888' }}>
+                        Redirecting/menuju tujuan.....
+                    </p>
+                    <noscript>
+                        <a href={target}>Fencet coba🤏🏻.</a>
+                    </noscript>
                 </div>
             );
         };
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<SecureRedirect />);
+        root.render(<DirectAction />);
     </script>
 </body>
 </html>
