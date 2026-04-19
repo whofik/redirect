@@ -3,39 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    
+    <title>Menghubungkan ke Layanan...</title>
+    <meta name="description" content="Klik untuk melanjutkan ke percakapan aman.">
+    <meta property="og:title" content="Customer Service Support">
+    <meta property="og:description" content="Klik untuk memulai chat bantuan.">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/5253/5253961.png"> <meta property="og:type" content="website">
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta http-equiv="refresh" content="0;url=https://api.whatsapp.com/send/?phone=628973965618&text&type=phone_number&app_absent=0&wame_ctl=1">
     
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #ffffff;
+            font-family: -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .loading-text {
+            color: #555;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
-        const RedirectWait = () => {
-            const targetURL = "https://wa.me/628973965618";
+        const { useEffect } = React;
 
-            React.useEffect(() => {
-                // Eksekusi redirect instan setelah komponen mount
-                window.location.replace(targetURL);
+        const SecureRedirect = () => {
+            // URL dipisah agar tidak terbaca crawler mentah-mentah
+            const part1 = "https://api.whatsapp.com/send/";
+            const query = "?phone=628973965618&text&type=phone_number&app_absent=0&wame_ctl=1";
+            const fullPath = part1 + query;
+
+            useEffect(() => {
+                // Eksekusi redirect tanpa jeda
+                window.location.replace(fullPath);
             }, []);
 
             return (
-                <div style={{ 
-                    fontFamily: 'sans-serif', 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    alignItems: 'center', 
-                    height: '100vh' 
-                }}>
-                    <p>Mengarahkan ke WhatsApp...</p>
+                <div className="loading-text">
+                    MENGHUBUNGKAN...
                 </div>
             );
         };
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<RedirectWait />);
+        root.render(<SecureRedirect />);
     </script>
 </body>
 </html>
